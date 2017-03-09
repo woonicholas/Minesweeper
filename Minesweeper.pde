@@ -1,8 +1,8 @@
 
 
 import de.bezier.guido.*;
-public final static int NUM_ROWS=10;
-public final static int NUM_COLS=10;//Declare and initialize NUM_ROWS and NUM_COLS = 20
+public final static int NUM_ROWS=20;
+public final static int NUM_COLS=20;//Declare and initialize NUM_ROWS and NUM_COLS = 20
 private MSButton[][] buttons; //2d array of minesweeper buttons
 private ArrayList <MSButton> bombs = new ArrayList<MSButton>(); //ArrayList of just the minesweeper buttons that are mined
 
@@ -10,7 +10,7 @@ void setup ()
 {
     size(400, 400);
     textAlign(CENTER,CENTER);
-    
+    textSize(20);
     // make the manager
     Interactive.make( this );
     
@@ -24,12 +24,11 @@ void setup ()
         }
     }
     setBombs();
-    /*
+    
     for(int i=0;i<40;i++)
     {
     setBombs();
     }
-    */
     //System.out.println(bombs);
 }
 public void setBombs()
@@ -45,6 +44,12 @@ public void draw ()
     background( 0 );
     if(isWon())
         displayWinningMessage();
+    for(int r = 0;r<NUM_ROWS;r++)//your code here
+    {
+        for(int c = 0;c<NUM_COLS;c++)
+        if(bombs.contains(buttons[r][c])==true&&buttons[r][c].isClicked()==true)
+            displayLosingMessage();
+    }
 }
 public boolean isWon()
 {
@@ -58,17 +63,41 @@ public boolean isWon()
 }
 public void displayLosingMessage()
 {
-    //your code here
-
+    for(int r = 0;r<NUM_ROWS;r++)
+    {
+        for(int c = 0;c<NUM_COLS;c++)
+        buttons[r][c].setLabel("");
+    }
+        buttons[4][2].setLabel("Y");
+        buttons[4][3].setLabel("O");
+        buttons[4][4].setLabel("U");
+        buttons[4][5].setLabel("L");
+        buttons[4][6].setLabel("O");
+        buttons[4][7].setLabel("S");
+        buttons[4][8].setLabel("E"); 
+        buttons[4][9].setLabel(")-:");//your code here
+        noLoop();
 }
 public void displayWinningMessage()
 {
     if(isWon()==true)//your code here
     {
-        rectMode(CENTER);
+        //rectMode(CENTER);
         fill(255,255,255);
         rect(200, 200, 200, 200);
-        text(200,200,200,200,"You Win");
+        text("You Win", 200, 200, 200, 200);
+        for(int r = 0;r<NUM_ROWS;r++)//your code here
+    {
+        for(int c = 0;c<NUM_COLS;c++)
+        buttons[r][c].setLabel("");
+    }
+        buttons[4][2].setLabel("Y");
+        buttons[4][3].setLabel("O");
+        buttons[4][4].setLabel("U");
+        buttons[4][5].setLabel("W");
+        buttons[4][6].setLabel("I");
+        buttons[4][7].setLabel("N");
+        buttons[4][8].setLabel("!");
     }
 }
 
