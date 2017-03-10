@@ -10,7 +10,7 @@ void setup ()
 {
     size(400, 400);
     textAlign(CENTER,CENTER);
-    textSize(20);
+    textSize(15);
     // make the manager
     Interactive.make( this );
     
@@ -25,7 +25,7 @@ void setup ()
     }
     setBombs();
     
-    for(int i=0;i<40;i++)
+    for(int i=0;i<100;i++)
     {
     setBombs();
     }
@@ -68,14 +68,14 @@ public void displayLosingMessage()
         for(int c = 0;c<NUM_COLS;c++)
         buttons[r][c].setLabel("");
     }
-        buttons[4][2].setLabel("Y");
-        buttons[4][3].setLabel("O");
-        buttons[4][4].setLabel("U");
-        buttons[4][5].setLabel("L");
-        buttons[4][6].setLabel("O");
-        buttons[4][7].setLabel("S");
-        buttons[4][8].setLabel("E"); 
-        buttons[4][9].setLabel(")-:");//your code here
+        buttons[NUM_ROWS/2-1][(NUM_COLS/4)+1].setLabel("Y");
+        buttons[NUM_ROWS/2-1][(NUM_COLS/4)+2].setLabel("O");
+        buttons[NUM_ROWS/2-1][(NUM_COLS/4)+3].setLabel("U");
+        buttons[NUM_ROWS/2-1][(NUM_COLS/4)+4].setLabel("L");
+        buttons[NUM_ROWS/2-1][(NUM_COLS/4)+5].setLabel("O");
+        buttons[NUM_ROWS/2-1][(NUM_COLS/4)+6].setLabel("S");
+        buttons[NUM_ROWS/2-1][(NUM_COLS/4)+7].setLabel("E"); 
+        buttons[NUM_ROWS/2-1][(NUM_COLS/4)+8].setLabel(")-:");//your code here
         noLoop();
 }
 public void displayWinningMessage()
@@ -91,13 +91,14 @@ public void displayWinningMessage()
         for(int c = 0;c<NUM_COLS;c++)
         buttons[r][c].setLabel("");
     }
-        buttons[4][2].setLabel("Y");
-        buttons[4][3].setLabel("O");
-        buttons[4][4].setLabel("U");
-        buttons[4][5].setLabel("W");
-        buttons[4][6].setLabel("I");
-        buttons[4][7].setLabel("N");
-        buttons[4][8].setLabel("!");
+         buttons[NUM_ROWS/2-1][(NUM_COLS/4)+1].setLabel("Y");
+        buttons[NUM_ROWS/2-1][(NUM_COLS/4)+2].setLabel("O");
+        buttons[NUM_ROWS/2-1][(NUM_COLS/4)+3].setLabel("U");
+        buttons[NUM_ROWS/2-1][(NUM_COLS/4)+4].setLabel("W");
+        buttons[NUM_ROWS/2-1][(NUM_COLS/4)+5].setLabel("I");
+        buttons[NUM_ROWS/2-1][(NUM_COLS/4)+6].setLabel("N");
+        buttons[NUM_ROWS/2-1][(NUM_COLS/4)+7].setLabel("!"); 
+        //buttons[NUM_ROWS/2-1][(NUM_COLS/4)+8].setLabel(":-)");
     }
 }
 
@@ -133,12 +134,12 @@ public class MSButton
     public void mousePressed () 
     {
         clicked = true;//your code here
-        if(keyPressed==true&&marked==false)
+        if(mouseButton==RIGHT&&marked==false)
         {
             clicked=false;
             marked=true;
         }
-        else if(keyPressed==true&&marked==true)
+        else if(mouseButton==RIGHT&&marked==true)
         {
             clicked=false;
             marked=false;
